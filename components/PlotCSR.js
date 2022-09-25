@@ -15,36 +15,14 @@ export default function PlotCSR(){
 
     function getValuess() {
 
-        let res = new Response;
-        getValue({},res)
+        let response = getValue().then((res) => console.log(res))
 
     }
 
-    useEffect(() => {
-        fetch('/api/javaHttpRequest')
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data)
-          })
-      }, [])
 
     const { cuvettes, setCuvettes } = useContext(CuvetteContext);
 
    let count = 0 
-
-/*
-   useEffect(() => {
-    setLoading(true)
-    fetch('http://localhost:8080/count/')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
-  }, [])
-*/
-
-    
 
     return(
         

@@ -1,0 +1,19 @@
+button.deviceLotImg{
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    width: 300px;
+}
+
+.cardInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cardDate{
+  display: flex;
+  flex-direction: column;
+}

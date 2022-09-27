@@ -1,3 +1,52 @@
+/* Navbar */
+
+.navbar {
+    height: 60px;
+    width: 100%;
+    background: #191919;
+    color: var(--colors-text);
+    position: fixed;
+    top: 0;
+    padding: 0 16px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--color-gray);
+    z-index: 99;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .navbar img {
+    border-radius: 50%;
+    height: 50px;
+    cursor: pointer;
+  }
+  
+  .navbar li {
+    border-radius: 50%;
+    
+  }
+
+  button.btnred {
+    background-color: var(--color-red);
+    color: white;
+    border-radius: 5%;
+  }
+
+  button.btnlogo {
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+  }
 
 .customfileupload {
     border: 1px solid #ccc;
@@ -5,3 +54,4 @@
     padding: 6px 12px;
     cursor: pointer;
 }
+

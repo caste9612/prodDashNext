@@ -1,34 +1,37 @@
 import { useContext, useEffect, useState } from 'react';
 import Router from 'next/router';
-import { CuvetteContext } from '../lib/context';
+import { LotsContext } from '../lib/context';
 import styles from "../styles/Navbar.module.css";
 import Image from 'next/image';
 import Logo from '../public/VisiaLab-Logo-RGB-Icon-HD.png';
 import { GrRefresh } from 'react-icons/gr';
+import getValue from '../pages/api/javaHttpRequest';
+
 
 export default function Navbar() {
 
     function resetPage(){
-        Router.reload();
+        let response = getValue().then((res) => {
+            console.log(res);
+            console.log("la navbar setta i lotti");
+            setLots(res);
+        });
     }
 
-    const { cuvettes, setCuvettes } = useContext(CuvetteContext);
+    const { lots, setLots } = useContext(LotsContext);
 
-
-    
     return(
-        <nav className="navbar">
+        <nav className={styles.navbar}>
             <ul>
 
                 <li>
-                    <button className='btn-logo'>
+                    <button className={styles.btnlogo}>
                         <img src= {Logo.src}/>
                     </button>
                 </li>
 
-
                 <li>
-                    <button className='btn-red' onClick={resetPage}>
+                    <button className={styles.btnred} onClick={resetPage}>
                         <GrRefresh />
                     </button>
                 </li>

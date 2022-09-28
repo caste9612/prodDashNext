@@ -5,12 +5,16 @@ import styles from "../styles/Navbar.module.css";
 import Image from 'next/image';
 import Logo from '../public/VisiaLab-Logo-RGB-Icon-HD.png';
 import { GrRefresh } from 'react-icons/gr';
+import { FcSettings } from 'react-icons/fc'
 import getValue from '../pages/api/javaHttpRequest';
 
 
 export default function Navbar() {
 
-    function resetPage(){
+    const { lots, setLots } = useContext(LotsContext);
+    const [check, setCheck] = useState(0);
+
+    function askData(){
         let response = getValue().then((res) => {
             //console.log(res);
             console.log("la navbar setta i lotti");
@@ -24,7 +28,7 @@ export default function Navbar() {
                 if(obj.type === "UNKNOWN"){
 
                 }else{
-                    console.log(obj);
+                    //console.log(obj);
                     incomingLots.push({
                         startDate: obj.startDate,
                         expectedEndDate: obj.expectedEndDate,
@@ -37,13 +41,23 @@ export default function Navbar() {
 
             }
 
-            incomingLots.sort((a,b) => (a.startDate > b.startDate) ? 1 : ((b.lotName > a.lotName) ? -1 : 0))
+            incomingLots.sort((a,b) => (a.lotName > b.lotName) ? 1 : 0);
 
             setLots(incomingLots);
         });
     }
 
-    const { lots, setLots } = useContext(LotsContext);
+    const callApi = () => {
+        askData();
+    }
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            callApi()
+            setCheck(check + 1)
+        }, 60000);
+        return () => clearInterval(id);
+    }, [check])
 
     return(
         <nav className={styles.navbar}>
@@ -59,12 +73,20 @@ export default function Navbar() {
                     <h1 className={styles.h1}>Production Dashboard</h1>
                 </li>
 
-                <li>
-                    <button className={styles.btnred} onClick={resetPage}>
-                        <GrRefresh />
-                    </button>
-                </li>
+                {/* <div className='buttonContainer'> */}
+                    <li>
+                        <button className={styles.btnred} onClick={askData}>
+                            <GrRefresh size={20} color={"white"}/>
+                        </button>
+                    </li>
 
+                    <li>
+                        <button className={styles.btnsettings}>
+                            <FcSettings size={20}/>
+                        </button>
+                    </li>
+                {/* </div> */}
+                
             </ul>
         </nav>
     );

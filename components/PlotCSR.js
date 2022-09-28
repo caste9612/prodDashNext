@@ -21,13 +21,13 @@ export default function PlotCSR(){
 
         console.log("La lista di card si e accorta del ripopolamento dei dati");
 
-      }, [lots]);
+    }, [lots]);
 
     return(
         
         <div className='containerColumn'>
             {lots.map( (lot, i) =>
-                <LotStateCard key={i} lotName = {lot.lotName} startDate = {lot.startDate} expectedEndDate = {lot.expectedEndDate} currentPhase = {lot.currentPhase} lotProgress = {lot.lotProgress} type = {lot.type} />
+                <LotStateCard key={i} lotName = {lot.lotName} startDate = {lot.startDate} expectedEndDate = {lot.expectedEndDate} effectiveEndDate = {lot.effectiveEndDate} currentPhase = {lot.currentPhase} lotProgress = {lot.lotProgress} type = {lot.type} />
             )}
         </div>
     );

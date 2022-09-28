@@ -38,11 +38,22 @@ export default function LotStateCard(props){
             <div className={styles.cardDate}>
                 <p>Start: {props.startDate}</p>
                 <p>Expected End: {props.expectedEndDate}</p>
-                <p>Effective End: XX/XX/XXXX</p>
+                <p>Effective End: {props.effectiveEndDate}</p>
                 <p>Current Phase: {props.currentPhase}</p>
             </div>
             </div>
-            <ProgressBar animated now={props.lotProgress} label={`${props.lotProgress}%`}/>
+            
+            {props.lotProgress === "100" && (
+                <>
+                    <ProgressBar striped variant="success" now={100} key={1} />
+                </>
+            )}
+            {props.lotProgress != "100" && (
+                <>
+                    <ProgressBar animated now={props.lotProgress} label={`${props.lotProgress}%`}/>                
+                </>
+            )}
+            
         </div>
     );
 

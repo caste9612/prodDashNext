@@ -40,9 +40,20 @@
     
   }
 
+ .buttonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
   button.btnred {
-    background-color: var(--color-red);
+    background-color: #00A376;
     color: white;
+    border-radius: 5%;
+  }
+
+  button.btnsettings {
+    background-color: #00A376;
     border-radius: 5%;
   }
 

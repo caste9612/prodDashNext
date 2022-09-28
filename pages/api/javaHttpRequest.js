@@ -8,7 +8,7 @@ export default async function getValue()
             "Content-Type": "text/plain"
         },
         }).then(function(response) {
-            return response.text();
+            return response.json();
       }).then(function(res){
         return res;
       });

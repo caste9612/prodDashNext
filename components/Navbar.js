@@ -12,9 +12,34 @@ export default function Navbar() {
 
     function resetPage(){
         let response = getValue().then((res) => {
-            console.log(res);
+            //console.log(res);
             console.log("la navbar setta i lotti");
-            setLots(res);
+
+            let incomingLots = [];
+
+            for (var i = 0; i < res.length; i++){
+
+                var obj = res[i];
+
+                if(obj.type === "UNKNOWN"){
+
+                }else{
+                    console.log(obj);
+                    incomingLots.push({
+                        startDate: obj.startDate,
+                        expectedEndDate: obj.expectedEndDate,
+                        currentPhase: obj.currentPhase,
+                        lotProgress: obj.lotProgress,
+                        type: obj.type,
+                        lotName: obj.lotName
+                    })
+                }
+
+            }
+
+            incomingLots.sort((a,b) => (a.startDate > b.startDate) ? 1 : ((b.lotName > a.lotName) ? -1 : 0))
+
+            setLots(incomingLots);
         });
     }
 
@@ -28,6 +53,10 @@ export default function Navbar() {
                     <button className={styles.btnlogo}>
                         <img src= {Logo.src}/>
                     </button>
+                </li>
+
+                <li>
+                    <h1 className={styles.h1}>Production Dashboard</h1>
                 </li>
 
                 <li>

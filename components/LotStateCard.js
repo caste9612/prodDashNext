@@ -30,7 +30,7 @@ export default function LotStateCard(props){
 
     return(
         <div className={expanded ? 'cardFullExp' : 'cardFull' } onClick={() => setExpanded(!expanded)}>
-        <h1 className='lotStateCardTitle'>Lot: XXX</h1>
+        <h1 className='lotStateCardTitle'>Lot: {props.lotName}</h1>
             <div className={styles.cardInfo}>
             <button className={styles.deviceLotImg}>
                 <img src = {imgSource}/>

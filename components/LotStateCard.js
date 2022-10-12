@@ -5,10 +5,15 @@ import EpiqoLogo from '../public/epiqo.png';
 import NaviliveLogo from '../public/navilive.png';
 import { useContext, useEffect, useState } from 'react';
 import { isUndefined } from 'lodash';
+import { MdEdit } from 'react-icons/md';
+import AddSerialToLotModal from './AddSerialToLotModal';
+
 
 export default function LotStateCard(props){
 
     const [expanded, setExpanded] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+
 
     useEffect(() => {
         console.log("card expanded:" + expanded);
@@ -30,7 +35,19 @@ export default function LotStateCard(props){
 
     return(
         <div className={expanded ? 'cardFullExp' : 'cardFull' } onClick={() => setExpanded(!expanded)}>
-        <h1 className='lotStateCardTitle'>Lot: {props.lotName}</h1>
+            <div className={styles.lotTitleDiv}>
+                <h1 className='lotStateCardTitle'>Lot: {props.lotName}</h1>
+                <button className={styles.btnEdit} onClick={() => setShowModal(true)}>
+                    <MdEdit size={20}/>
+                </button>
+                <AddSerialToLotModal 
+                        onClose={() => setShowModal(false)}
+                        show={showModal}
+                        lot =  {props.lotName}
+                >
+                    Aggiungi un seriale per il lotto:
+                </AddSerialToLotModal>
+            </div>
             <div className={styles.cardInfo}>
             <button className={styles.deviceLotImg}>
                 <img src = {imgSource}/>

@@ -25,11 +25,15 @@ export default function PlotCSR(){
 
     return(
         
-        <div className='containerColumn'>
-            {lots.map( (lot, i) =>
-                <LotStateCard key={i} lotName = {lot.lotName} startDate = {lot.startDate} expectedEndDate = {lot.expectedEndDate} effectiveEndDate = {lot.effectiveEndDate} currentPhase = {lot.currentPhase} lotProgress = {lot.lotProgress} type = {lot.type} />
-            )}
+        <div>
+            <div id="modal-root"></div>
+            <div className='containerColumn'>
+                {lots.map( (lot, i) =>
+                    <LotStateCard key={i} lotName = {lot.lotName} startDate = {lot.startDate} expectedEndDate = {lot.expectedEndDate} effectiveEndDate = {lot.effectiveEndDate} currentPhase = {lot.currentPhase} lotProgress = {lot.lotProgress} type = {lot.type} />
+                )}
+            </div>
         </div>
+        
     );
 }
 

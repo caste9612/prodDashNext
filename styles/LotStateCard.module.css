@@ -17,3 +17,16 @@ button.deviceLotImg{
   display: flex;
   flex-direction: column;
 }
+
+button.btnEdit {
+  background-color: #00A376;
+  color: #111;
+  border-radius: 5%;
+  margin-left: 5px;
+  
+}
+
+.lotTitleDiv{
+  display: flex;
+  flex-direction: row;
+}

@@ -1,7 +1,7 @@
 export default async function getValue()
 {
 
-    return fetch("http://10.100.2.15:8080/count/", {
+    return fetch("http://127.0.0.1:8080/count/", {
         method: 'GET',
         redirect: 'follow',
         headers: {

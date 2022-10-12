@@ -45,7 +45,7 @@ export default function LotStateCard(props){
             
             {props.lotProgress === "100" && (
                 <>
-                    <ProgressBar striped variant="success" now={100} key={1} />
+                    <ProgressBar striped variant="success" now={props.lotProgress} label={`${props.lotProgress}%`} />
                 </>
             )}
             {props.lotProgress != "100" && (

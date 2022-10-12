@@ -41,7 +41,11 @@ export default function Navbar() {
 
             }
 
-            incomingLots.sort((a,b) => (a.lotName > b.lotName) ? 1 : 0);
+            incomingLots.sort((a, b) => parseFloat(b.lotName) - parseFloat(a.lotName));
+            incomingLots.sort((a,b) => ((parseFloat(a.lotProgress) > parseFloat(b.lotProgress)) ? 1 : (parseFloat(a.lotName) > parseFloat(b.lotName)) ? -1 : 0))
+
+
+
 
             setLots(incomingLots);
         });
